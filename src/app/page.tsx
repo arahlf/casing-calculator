@@ -25,6 +25,11 @@ export default function Home() {
   }
 
   function calculate() {
+    // TODO add input-level validations
+    if (windowInnerWidth == 0 || windowInnerHeight == 0 || casingWidth == 0) {
+      return;
+    }
+
     setBottomLength(windowInnerWidth + (reveal * 2));
     setLegLength(windowInnerHeight + (reveal * 2) + casingWidth);
     setHeadLength(windowInnerWidth + (reveal * 2) + (casingWidth * 2));
@@ -33,10 +38,10 @@ export default function Home() {
   return (
     <ThemeProvider>
     <main className="flex min-h-screen flex-col space-y-6 items-center p-10">
-      <Input type='number' onChange={onInputChangeHandler(setWindowInnerWidth)} label="Window inner width" />
-      <Input type='number' onChange={onInputChangeHandler(setWindowInnerHeight)} label="Window inner height" />
-      <Input type='number' onChange={onInputChangeHandler(setCasingWidth)} label="Casing width" defaultValue={defaultCasingWidth} />
-      <Input type='number' onChange={onInputChangeHandler(setReveal)} label="Reveal" defaultValue={defaultReveal}/>
+      <Input crossOrigin={undefined} type='number' onChange={onInputChangeHandler(setWindowInnerWidth)} label="Window inner width" />
+      <Input crossOrigin={undefined} type='number' onChange={onInputChangeHandler(setWindowInnerHeight)} label="Window inner height" />
+      <Input crossOrigin={undefined} type='number' onChange={onInputChangeHandler(setCasingWidth)} label="Casing width" defaultValue={defaultCasingWidth} />
+      <Input crossOrigin={undefined} type='number' onChange={onInputChangeHandler(setReveal)} label="Reveal" defaultValue={defaultReveal}/>
 
       <Button onClick={calculate}>Calculate</Button>
 
